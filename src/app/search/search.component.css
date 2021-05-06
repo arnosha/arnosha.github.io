@@ -1,0 +1,45 @@
+.card-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.card-header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tags-input {
+  min-width: 100%;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input {
+  width: 80%;
+  margin: 20px 0 0 15px;
+}
+
+.empty-paceholder {
+  margin: 20px 0 0 20px;
+}
+
+kendo-card {
+  margin-top: 15px;
+}
+
+.pager-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+kendo-datapager {
+  max-width: 400px;
+}

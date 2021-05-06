@@ -1,0 +1,42 @@
+<kendo-textbox
+  class="search-input"
+  (input)="searchImages($event.target.value)"
+  placeholder="Find images"
+></kendo-textbox>
+<ng-container *ngIf="images | async; else placeholder">
+  <div class="pager-container">
+    <kendo-datapager
+      [total]="total"
+      [skip]="skip"
+      [pageSize]="pageSize"
+      info="false"
+      type="input"
+      (pageChange)="onPageChange($event)"
+    ></kendo-datapager>
+  </div>
+  <div class="card-list">
+    <kendo-card [width]="'260px'" *ngFor="let image of images | async">
+      <kendo-card-header class="card-header" kendoCardTitle>
+        {{ image.title ? image.title : "untitled" }}
+      </kendo-card-header>
+      <kendo-card-body>
+        <img kendoCardMedia [src]="image.url" />
+      </kendo-card-body>
+      <kendo-card-actions orientation="vertical">
+        <button (click)="bookmark(image, tags.value)" kendoButton>
+          Bookmark it!
+        </button>
+        <kendo-textbox
+          #tags
+          class="tags-input"
+          placeholder="some tags?"
+        ></kendo-textbox>
+      </kendo-card-actions>
+    </kendo-card>
+  </div>
+</ng-container>
+<ng-template #placeholder>
+  <p class="empty-paceholder">
+    No images here. Would you try to search for anything else?
+  </p>
+</ng-template>
