@@ -1,10 +1,8 @@
 <ng-container *ngIf="bookmarks; else placeholder">
   <div class="card-list">
     <kendo-card [width]="'260px'" *ngFor="let bookmark of bookmarks">
-      <kendo-card-header>
-        <h1 class="card-header" kendoCardTitle>
-          {{ bookmark.title ? bookmark.title : "untitled" }}
-        </h1>
+      <kendo-card-header class="card-header" kendoCardTitle>
+        {{ bookmark.title ? bookmark.title : "untitled" }}
       </kendo-card-header>
       <kendo-card-body>
         <img kendoCardMedia [src]="bookmark.url" />
@@ -17,7 +15,7 @@
           #tags
           disabled
           class="tags-input"
-          placeholder="no tags provided"
+          [value]="bookmark.tags ? bookmark.tags : 'no tags provided'"
         ></kendo-textbox>
       </kendo-card-actions>
     </kendo-card>

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 export type Bookmark = {
   id: string;
-  [key: string]: any;
+  url: string;
+  tags: string;
 };
 
 @Injectable({

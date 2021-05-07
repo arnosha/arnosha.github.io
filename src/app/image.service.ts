@@ -5,7 +5,7 @@ import { FLICKR_API_KEY, IMG_BASE_URL } from './constants';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-type Photo = {
+export type Photo = {
   id: string;
   server: string;
   secret: string;
@@ -42,6 +42,18 @@ export class ImageService {
 
     return response.pipe(
       map((res) => {
+        if (res.stat === 'fail' || res.photos.photo.length === 0) {
+          return {
+            ...res,
+            photos: {
+              page: 0,
+              pages: 0,
+              perpage: 0,
+              total: 0,
+              photo: undefined,
+            },
+          };
+        }
         const photo = res.photos.photo.map<Photo & { url: string }>(
           (photo) => ({
             url: `${IMG_BASE_URL}${photo.server}/${photo.id}_${photo.secret}.jpg`,

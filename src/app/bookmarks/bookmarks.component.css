@@ -1,0 +1,17 @@
+kendo-card {
+  margin-top: 15px;
+}
+
+.card-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.card-header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 0;
+}

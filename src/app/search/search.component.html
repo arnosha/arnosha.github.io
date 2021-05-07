@@ -23,7 +23,16 @@
         <img kendoCardMedia [src]="image.url" />
       </kendo-card-body>
       <kendo-card-actions orientation="vertical">
-        <button (click)="bookmark(image, tags.value)" kendoButton>
+        <button
+          #bookmarkButton
+          (click)="
+            bookmarkButton.disabled = true;
+            bookmarkButton.textContent = 'Bookmarked';
+            tags.disabled = true;
+            bookmark(image, tags.value)
+          "
+          kendoButton
+        >
           Bookmark it!
         </button>
         <kendo-textbox

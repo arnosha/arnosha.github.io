@@ -5,10 +5,7 @@ import { PageChangeEvent } from '@progress/kendo-angular-pager';
 
 import { ImageService } from '../image.service';
 import { BookmarkService, Bookmark } from '../bookmark.service';
-
-export type Image = {
-  id: string;
-};
+import { Photo } from '../image.service';
 
 @Component({
   selector: 'app-search',
@@ -36,8 +33,8 @@ export class SearchComponent implements OnInit {
     this.textSubject.next(text);
   }
 
-  bookmark(image: Image, tags: string) {
-    this.bookmarkService.bookmark(image);
+  bookmark(image: Photo & { url: string }, tags: string) {
+    this.bookmarkService.bookmark({ ...image, tags });
   }
 
   public onPageChange(e: PageChangeEvent): void {
